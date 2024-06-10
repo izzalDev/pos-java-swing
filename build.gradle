@@ -30,6 +30,7 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.openjfx:javafx-swing:23-ea+20'
 	implementation 'com.miglayout:miglayout-swing:11.3'
+	testImplementation 'org.assertj:assertj-core:3.26.0'
 }
 
 tasks.named('test') {
