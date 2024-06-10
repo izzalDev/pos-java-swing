@@ -27,11 +27,11 @@ public class Product {
         this.price = price;
     }
 
-    void setId(Long id) {
-        if (this.id == null) {
-            this.id = id;
-        } else {
-            throw new IllegalStateException("ID can only be set once.");
-        }
-    }
+    // void setId(Long id) {
+    //     if (this.id == null) {
+    //         this.id = id;
+    //     } else {
+    //         throw new IllegalStateException("ID can only be set once.");
+    //     }
+    // }
 }

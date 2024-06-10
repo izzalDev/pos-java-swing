@@ -11,15 +11,15 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class Application{
 
 	public static void main(String[] args) {
-		new SpringApplicationBuilder(Application.class)
-		.headless(false)
-		.run(args);
-
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(new JLabel("Hello, World!"));
 		frame.pack();
 		frame.setVisible(true);
+		new SpringApplicationBuilder(Application.class)
+		.headless(false)
+		.run(args);
+
 	}
 
 }
