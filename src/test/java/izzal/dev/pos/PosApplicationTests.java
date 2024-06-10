@@ -1,4 +1,4 @@
-package izzal.my.id.pos;
+package izzal.dev.pos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
