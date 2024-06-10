@@ -4,12 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Data @NoArgsConstructor
@@ -27,11 +23,11 @@ public class Product {
         this.price = price;
     }
 
-    // void setId(Long id) {
-    //     if (this.id == null) {
-    //         this.id = id;
-    //     } else {
-    //         throw new IllegalStateException("ID can only be set once.");
-    //     }
-    // }
+    void setId(Long id) {
+        if (this.id == null) {
+            this.id = id;
+        } else {
+            throw new IllegalStateException("ID can only be set once.");
+        }
+    }
 }
