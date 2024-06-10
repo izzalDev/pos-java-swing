@@ -1,25 +1,25 @@
 package izzal.dev.pos;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
-public class Application extends JFrame{
-
-	public Application() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Halo World");
-		setSize(300, 300);
-		setVisible(true);
-	}
+public class Application{
 
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(Application.class)
 		.headless(false)
 		.run(args);
+
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(new JLabel("Hello, World!"));
+		frame.pack();
+		frame.setVisible(true);
 	}
 
 }
