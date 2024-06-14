@@ -5,13 +5,17 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import izzal.dev.pos.database.CustomerRepository;
 import izzal.dev.pos.model.Customer;
 import izzal.dev.pos.view.CustomerView;
 
 @Component
 public class CustomerController {
-
+    private int selectRow;
     private final CustomerRepository repo;
     private final CustomerView view;
     private final List<Long> selectedIds;
@@ -36,6 +40,13 @@ public class CustomerController {
                 new Object[] {false, customer.getId(), customer.getName(), customer.getAddress(), customer.getCity()}
             );
         }
+        ListSelectionModel model = view.getTblCustomer().getSelectionModel();
+        model.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                selectRow = model.getMinSelectionIndex();
+            } 
+        });
     }
 
     private void searchAction() {
@@ -52,6 +63,9 @@ public class CustomerController {
 
     private void deleteAction() {
         // TODO buat customer delete action
+        Long selectId = (Long) view.getMdlCustomer().getValueAt(selectRow,1);
+        repo.deleteById(selectId);
+        view.getMdlCustomer().removeRow(selectRow);
     }
 
     private void selectRow() {

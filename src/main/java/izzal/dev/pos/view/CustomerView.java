@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.FlatSearchIcon;
 
-import izzal.dev.pos.utils.CheckboxRenderer;
+// import izzal.dev.pos.utils.CheckboxRenderer;
 import lombok.Getter;
 import net.miginfocom.swing.MigLayout;
 
@@ -52,7 +52,7 @@ public class CustomerView extends JFrame {
         mdlCustomer = new DefaultTableModel(data, columnNames){
             Class<?>[] types = new Class [] {
                 java.lang.Boolean.class, 
-                java.lang.Object.class, 
+                java.lang.Long.class, 
                 java.lang.Object.class, 
                 java.lang.Object.class,
                 java.lang.Object.class,
