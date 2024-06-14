@@ -1,6 +1,7 @@
 package izzal.dev.pos.controller;
 
 import java.util.List;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +14,13 @@ public class CustomerController {
 
     private final CustomerRepository repo;
     private final CustomerView view;
+    private final List<Long> selectedIds;
     
     @Autowired
     public CustomerController(CustomerView view, CustomerRepository repo) {
         this.view = view;
         this.repo = repo;
+        this.selectedIds = new ArrayList<Long>();
         initController();
     }
 
@@ -30,25 +33,29 @@ public class CustomerController {
         List<Customer> customers = repo.findAll();
         for (Customer customer : customers) {
             view.getMdlCustomer().addRow(
-                new Object[] {customer.getId(), customer.getName(), customer.getAddress(), customer.getCity()}
+                new Object[] {false, customer.getId(), customer.getName(), customer.getAddress(), customer.getCity()}
             );
         }
     }
 
     private void searchAction() {
-        // TODO Auto-generated method stub
+        // TODO Buat customer search action
     }
 
     private void addAction() {
-        // TODO Auto-generated method stub
+        // TODO Buat customer add action
     }
 
     private void editAction() {
-        // TODO Auto-generated method stub
+        // TODO Buat customeredit action
     }
 
     private void deleteAction() {
-        // TODO Auto-generated method stub
+        // TODO buat customer delete action
+    }
+
+    private void selectRow() {
+        // TODO Buat select row action
     }
 
 }
