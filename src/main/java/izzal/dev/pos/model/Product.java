@@ -1,4 +1,4 @@
-package izzal.dev.pos.entity;
+package izzal.dev.pos.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +23,7 @@ public class Product {
         this.price = price;
     }
 
-    void setId(Long id) {
+    public void setId(Long id) {
         if (this.id == null) {
             this.id = id;
         } else {

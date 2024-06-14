@@ -31,6 +31,7 @@ dependencies {
 	implementation 'org.openjfx:javafx-swing:23-ea+20'
 	implementation 'com.miglayout:miglayout-swing:11.3'
 	testImplementation 'org.assertj:assertj-core:3.26.0'
+	implementation 'com.apple:AppleJavaExtensions:1.4'
 }
 
 tasks.named('test') {

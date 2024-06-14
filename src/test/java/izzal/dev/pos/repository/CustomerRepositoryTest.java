@@ -6,11 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import izzal.dev.pos.entity.Customer;
+import izzal.dev.pos.database.CustomerRepository;
+import izzal.dev.pos.model.Customer;
 @SpringBootTest
 public class CustomerRepositoryTest {
     @Autowired
-    private CostumerRepository repository;
+    private CustomerRepository repository;
 
     @Test
     public void testSaveAndRetrieve() {

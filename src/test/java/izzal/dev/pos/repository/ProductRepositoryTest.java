@@ -9,7 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import izzal.dev.pos.entity.Product;
+import izzal.dev.pos.database.ProductRepository;
+import izzal.dev.pos.model.Product;
 
 @SpringBootTest
 public class ProductRepositoryTest {
