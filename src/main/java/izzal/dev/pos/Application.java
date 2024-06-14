@@ -1,43 +1,38 @@
 package izzal.dev.pos;
 
-import java.awt.Desktop;
-import java.awt.desktop.AppReopenedEvent;
-import java.awt.desktop.AppReopenedListener;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.ApplicationContext;
+
+import java.awt.Font;
+
+import javax.swing.UIManager;
+
+import com.formdev.flatlaf.fonts.roboto.FlatRobotoFont;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+
+import izzal.dev.pos.controller.CustomerController;
+import izzal.dev.pos.database.CustomerRepository;
+import izzal.dev.pos.model.Customer;
 
 @SpringBootApplication
 public class Application {
 
-	public static void main(String[] args) {
-		new SpringApplicationBuilder(Application.class)
-				.headless(false)
-				.run(args);
-
+	@Autowired
+	public Application(CustomerRepository repo) {
+		repo.save(new Customer("Rizal Fadlullah", "Semarang", "Semarang"));
+		System.setProperty( "apple.awt.application.name", "Aplikasi Kasir" );
+		System.setProperty( "apple.awt.application.appearance", "system" );
+		FlatRobotoFont.install();
+		UIManager.put("defaultFont", new Font(FlatRobotoFont.FAMILY, Font.PLAIN, 13));
+		FlatMacDarkLaf.setup();
 	}
 
-	@Bean
-	public CommandLineRunner commandLineRunner() {
-		return args -> {
-			javax.swing.SwingUtilities.invokeLater(() -> {
-				JFrame frame = new JFrame();
-				frame.getContentPane().add(new JLabel("Hello, World!"));
-				frame.pack();
-				frame.setVisible(true);
-				
-				Desktop.getDesktop().addAppEventListener(new AppReopenedListener() {
-					@Override
-					public void appReopened(AppReopenedEvent e) {
-						frame.setVisible(true);
-					}
-				});
-			});
-		};
+	public static void main(String[] args) {
+		ApplicationContext context = new SpringApplicationBuilder(Application.class)
+				.headless(false)
+				.run(args);
+		context.getBean(CustomerController.class);
 	}
 }

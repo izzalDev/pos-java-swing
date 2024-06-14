@@ -32,6 +32,8 @@ dependencies {
 	implementation 'com.miglayout:miglayout-swing:11.3'
 	testImplementation 'org.assertj:assertj-core:3.26.0'
 	implementation 'com.apple:AppleJavaExtensions:1.4'
+	implementation 'com.formdev:flatlaf:3.4.1'
+	implementation 'com.formdev:flatlaf-fonts-roboto:2.137'
 }
 
 tasks.named('test') {
