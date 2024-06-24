@@ -10,7 +10,6 @@ public class SplashScreenView extends JFrame {
         setSize(200, 75);
         setLocationRelativeTo(null);
         initComponents();
-        setVisible(true);
     }
 
     public void  initComponents(){

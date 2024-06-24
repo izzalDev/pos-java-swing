@@ -23,10 +23,12 @@ import org.springframework.context.event.EventListener;
 
 @SpringBootApplication
 public class Application {
-	private static SplashScreenView splashScreen;
+	public static SplashScreenView splashScreen;
 
 	@Autowired
 	public Application(CustomerRepository repo) {
+		splashScreen = new SplashScreenView();
+		splashScreen.setVisible(true);
 		repo.save(new Customer("Rizal Fadlullah", "Semarang", "Semarang"));
 		System.setProperty( "apple.awt.application.name", "Aplikasi Kasir" );
 		System.setProperty( "apple.awt.application.appearance", "system" );
@@ -36,11 +38,11 @@ public class Application {
 	}
 
 	public static void main(String[] args) {
-		splashScreen = new SplashScreenView();
 		ApplicationContext context = new SpringApplicationBuilder(Application.class)
 				.headless(false)
 				.run(args);
-		context.getBean(CustomerController.class);
 		splashScreen.dispose();
+		context.getBean(CustomerController.class);
+
 	}
 }
